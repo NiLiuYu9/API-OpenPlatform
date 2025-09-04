@@ -52,6 +52,9 @@ public class InterfaceInfoUpdateRequest implements Serializable {
      */
     private String method;
 
+    private String requestParams;
+
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 

@@ -17,11 +17,12 @@
             <result property="createTime" column="createTime" />
             <result property="updateTime" column="updateTime" />
             <result property="isDelete" column="isDelete" />
+            <result property="requestParams" column="requestParams" />
     </resultMap>
 
     <sql id="Base_Column_List">
         id,name,description,url,requestHeader,responseHeader,
-        status,method,userId,createTime,updateTime,
+        status,method,userId,createTime,updateTime,requestParams,
         isDelete
     </sql>
 </mapper>
