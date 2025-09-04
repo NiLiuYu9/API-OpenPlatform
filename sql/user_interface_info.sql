@@ -1,5 +1,5 @@
 -- 用户调用接口
-create table if not exists yuapi.`user_interface_info`
+create table if not exists api.`user_interface_info`
 (
     `id` bigint not null auto_increment comment '主键' primary key,
     `userId` bigint not null comment '调用用户id',
