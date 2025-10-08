@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yupi.project.mapper.InterfaceInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.yupi.project.model.entity.InterfaceInfo">
+    <resultMap id="BaseResultMap" type="com.yupi.yuapicommon.model.entity.InterfaceInfo">
             <id property="id" column="id" />
             <result property="name" column="name" />
             <result property="description" column="description" />
@@ -25,4 +25,14 @@
         status,method,userId,createTime,updateTime,requestParams,
         isDelete
     </sql>
+    <select id="selectTopInvokeInterfaceInfo" resultType="com.yupi.yuapicommon.model.vo.InterfaceInfoVO">
+        SELECT
+            ii.*,
+            SUM(uii.totalNum) AS totalNum
+        FROM interface_info ii
+                 INNER JOIN user_interface_info uii ON ii.id = uii.interfaceInfoId
+        GROUP BY uii.interfaceInfoId
+        ORDER BY totalNum DESC
+            LIMIT #{limit}
+    </select>
 </mapper>

@@ -10,7 +10,7 @@ import com.yupi.project.common.ResultUtils;
 import com.yupi.project.exception.BusinessException;
 import com.yupi.project.model.dto.*;
 import com.yupi.project.model.dto.user.*;
-import com.yupi.project.model.entity.User;
+import com.yupi.yuapicommon.model.entity.User;
 import com.yupi.project.model.vo.UserVO;
 import com.yupi.project.service.UserService;
 import org.apache.commons.lang3.StringUtils;
@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 
 /**
  * 用户接口
- *
- * @author yupi
  */
 @RestController
 @RequestMapping("/user")

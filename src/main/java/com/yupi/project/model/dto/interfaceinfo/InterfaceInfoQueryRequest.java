@@ -13,8 +13,6 @@ import java.util.Date;
 
 /**
  * 查询请求
- *
- * @author yupi
  */
 @Data
 public class InterfaceInfoQueryRequest extends PageRequest implements Serializable {

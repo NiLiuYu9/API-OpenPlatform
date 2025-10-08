@@ -2,8 +2,6 @@ package com.yupi.project.common;
 
 /**
  * 返回工具类
- *
- * @author yupi
  */
 public class ResultUtils {
 

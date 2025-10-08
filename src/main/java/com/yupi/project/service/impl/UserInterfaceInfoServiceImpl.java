@@ -5,21 +5,22 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yupi.project.common.ErrorCode;
 import com.yupi.project.exception.BusinessException;
 import com.yupi.project.mapper.UserInterfaceInfoMapper;
-import com.yupi.project.model.entity.UserInterfaceInfo;
 import com.yupi.project.service.UserInterfaceInfoService;
+import com.yupi.yuapicommon.model.entity.UserInterfaceInfo;
 import org.springframework.stereotype.Service;
 
 /**
-* @author Netis
-* @description 针对表【user_interface_info(用户调用接口关系)】的数据库操作Service实现
-* @createDate 2025-09-04 10:31:43
-*/
+ * 用户接口信息服务实现类
+ *
+
+ */
 @Service
 public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoMapper, UserInterfaceInfo>
-    implements UserInterfaceInfoService {
+    implements UserInterfaceInfoService{
+
 
     @Override
-    public void validUserInterfaceInfo(UserInterfaceInfo userInterfaceInfo, boolean add) {
+    public void validUserInterfaceInfo(com.yupi.yuapicommon.model.entity.UserInterfaceInfo userInterfaceInfo, boolean add) {
         if (userInterfaceInfo == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
@@ -34,8 +35,6 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         }
     }
 
-    // [编程学习交流圈](https://www.code-nav.cn/) 快速入门编程不走弯路！30+ 原创学习路线和专栏、500+ 编程学习指南、1000+ 编程精华文章、20T+ 编程资源汇总
-
     @Override
     public boolean invokeCount(long interfaceInfoId, long userId) {
         // 判断
@@ -45,8 +44,9 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         UpdateWrapper<UserInterfaceInfo> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("interfaceInfoId", interfaceInfoId);
         updateWrapper.eq("userId", userId);
+
+//        updateWrapper.gt("leftNum", 0);
         updateWrapper.setSql("leftNum = leftNum - 1, totalNum = totalNum + 1");
-        //todo redis分布式锁解决并发问题
         return this.update(updateWrapper);
     }
 
